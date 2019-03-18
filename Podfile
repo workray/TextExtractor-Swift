@@ -6,5 +6,8 @@ target 'TextExtractor' do
   use_frameworks!
 
   # Pods for TextExtractor
+  pod 'Firebase/Core'
+  pod 'Firebase/MLVision'
+  pod 'Firebase/MLVisionTextModel'
 
 end
