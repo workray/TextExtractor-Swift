@@ -42,9 +42,13 @@ class ScaledElementProcessor {
             for block in result.blocks {
                 for line in block.lines {
                     for element in line.elements {
-                        let shapeLayer = self.createShapeLayer(frame: element.frame)
-                        let scaledElement =
-                            ScaledElement(frame: element.frame, shapeLayer: shapeLayer)
+                        let frame = self.createScaledFrame(
+                            featureFrame: element.frame,
+                            imageSize: image.size,
+                            viewFrame: imageView.frame)
+                        
+                        let shapeLayer = self.createShapeLayer(frame: frame)
+                        let scaledElement = ScaledElement(frame: frame, shapeLayer: shapeLayer)
                         scaledElements.append(scaledElement)
                     }
                 }
@@ -63,6 +67,39 @@ class ScaledElementProcessor {
         shapeLayer.fillColor = Constants.fillColor
         shapeLayer.lineWidth = Constants.lineWidth
         return shapeLayer
+    }
+    
+    private func createScaledFrame(
+        featureFrame: CGRect,
+        imageSize: CGSize, viewFrame: CGRect)
+        -> CGRect {
+            let viewSize = viewFrame.size
+            
+            let resolutionView = viewSize.width / viewSize.height
+            let resolutionImage = imageSize.width / imageSize.height
+            
+            var scale: CGFloat
+            if resolutionView > resolutionImage {
+                scale = viewSize.height / imageSize.height
+            } else {
+                scale = viewSize.width / imageSize.width
+            }
+            
+            let featureWidthScaled = featureFrame.size.width * scale
+            let featureHeightScaled = featureFrame.size.height * scale
+            
+            let imageWidthScaled = imageSize.width * scale
+            let imageHeightScaled = imageSize.height * scale
+            let imagePointXScaled = (viewSize.width - imageWidthScaled) / 2
+            let imagePointYScaled = (viewSize.height - imageHeightScaled) / 2
+            
+            let featurePointXScaled = imagePointXScaled + featureFrame.origin.x * scale
+            let featurePointYScaled = imagePointYScaled + featureFrame.origin.y * scale
+            
+            return CGRect(x: featurePointXScaled,
+                          y: featurePointYScaled,
+                          width: featureWidthScaled,
+                          height: featureHeightScaled)
     }
     
     // MARK: - private
