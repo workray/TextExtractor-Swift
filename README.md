@@ -13,4 +13,5 @@ The existing APIs currently support:
 - [x] [Identifying landmarks](https://firebase.google.com/docs/ml-kit/ios/recognize-landmarks)
 - [x] [Scanning barcodes](https://firebase.google.com/docs/ml-kit/ios/read-barcodes)
 - [x] [Labeling images](https://firebase.google.com/docs/ml-kit/ios/label-images)
-      Each of these use cases comes with a pre-trained model wrapped in an easy-to-use API
+
+Each of these use cases comes with a pre-trained model wrapped in an easy-to-use API

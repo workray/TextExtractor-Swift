@@ -1,24 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3s6-gN-Bqz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Extractor-->
+        <scene sceneID="tvK-Ib-wX3">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="qcd-ga-F3j" customClass="ViewController" customModule="TextExtractor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PHH-vA-lxR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9P-Bj-1Yq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="369"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanned-text" translatesAutoresizingMaskIntoConstraints="NO" id="CP1-aS-IKE">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="369"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.17254901959999999" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="CP1-aS-IKE" firstAttribute="top" secondItem="r9P-Bj-1Yq" secondAttribute="top" id="45h-tt-XEI"/>
+                                    <constraint firstItem="CP1-aS-IKE" firstAttribute="leading" secondItem="r9P-Bj-1Yq" secondAttribute="leading" id="4Ze-JF-fE0"/>
+                                    <constraint firstAttribute="bottom" secondItem="CP1-aS-IKE" secondAttribute="bottom" id="Rvg-wA-FF0"/>
+                                    <constraint firstAttribute="trailing" secondItem="CP1-aS-IKE" secondAttribute="trailing" id="TFx-8C-SBN"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTc-Og-vU8">
+                                <rect key="frame" x="71" y="601" width="87" height="32"/>
+                                <state key="normal" title="TAKE" image="menu-icon"/>
+                                <connections>
+                                    <action selector="libraryDidTouch:" destination="qcd-ga-F3j" eventType="touchUpInside" id="2eN-go-WYd"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Detected text can be edited here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fhs-dT-Zid">
+                                <rect key="frame" x="16" y="454" width="343" height="106"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0d-AV-fcW">
+                                <rect key="frame" x="246" y="594" width="101" height="46"/>
+                                <state key="normal" title="TAKE" image="camera-icon"/>
+                                <connections>
+                                    <action selector="cameraDidTouch:" destination="qcd-ga-F3j" eventType="touchUpInside" id="27C-Y0-qBG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t0d-AV-fcW" firstAttribute="top" secondItem="r9P-Bj-1Yq" secondAttribute="bottom" constant="161" id="1dE-Ek-uzh"/>
+                            <constraint firstItem="tTc-Og-vU8" firstAttribute="baseline" secondItem="t0d-AV-fcW" secondAttribute="baseline" id="3uS-6M-6a4"/>
+                            <constraint firstItem="t0d-AV-fcW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tTc-Og-vU8" secondAttribute="trailing" constant="8" symbolic="YES" id="G2V-cs-U6m"/>
+                            <constraint firstItem="tTc-Og-vU8" firstAttribute="leading" secondItem="PmF-qn-tPq" secondAttribute="leading" constant="71" id="HqN-zf-UL0"/>
+                            <constraint firstItem="t0d-AV-fcW" firstAttribute="top" secondItem="fhs-dT-Zid" secondAttribute="bottom" constant="34" id="RTa-qh-6LS"/>
+                            <constraint firstAttribute="trailing" secondItem="t0d-AV-fcW" secondAttribute="trailing" constant="28" id="ZlY-xb-XYB"/>
+                            <constraint firstItem="r9P-Bj-1Yq" firstAttribute="top" secondItem="PmF-qn-tPq" secondAttribute="top" id="ew0-5b-QVJ"/>
+                            <constraint firstItem="r9P-Bj-1Yq" firstAttribute="leading" secondItem="PHH-vA-lxR" secondAttribute="leading" id="jLf-dA-Hac"/>
+                            <constraint firstItem="fhs-dT-Zid" firstAttribute="top" secondItem="r9P-Bj-1Yq" secondAttribute="bottom" constant="21" id="lPn-1h-RGt"/>
+                            <constraint firstItem="fhs-dT-Zid" firstAttribute="leading" secondItem="PHH-vA-lxR" secondAttribute="leadingMargin" id="lqU-7Q-Wby"/>
+                            <constraint firstItem="fhs-dT-Zid" firstAttribute="centerX" secondItem="r9P-Bj-1Yq" secondAttribute="centerX" id="pyM-iS-i50"/>
+                            <constraint firstItem="tTc-Og-vU8" firstAttribute="top" secondItem="fhs-dT-Zid" secondAttribute="bottom" constant="41" id="r8S-Bc-SmZ"/>
+                            <constraint firstAttribute="trailing" secondItem="r9P-Bj-1Yq" secondAttribute="trailing" id="uV8-0k-xuq"/>
+                            <constraint firstItem="PmF-qn-tPq" firstAttribute="bottom" secondItem="t0d-AV-fcW" secondAttribute="bottom" constant="27" id="xwV-bW-EwC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PmF-qn-tPq"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Extractor" id="NOF-zk-SnF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="mwj-1z-ixf">
+                            <connections>
+                                <action selector="shareDidTouch:" destination="qcd-ga-F3j" id="uYj-Cu-kSp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cameraButton" destination="t0d-AV-fcW" id="fjd-KI-qPt"/>
+                        <outlet property="imageView" destination="CP1-aS-IKE" id="Via-YR-NKU"/>
+                        <outlet property="textView" destination="fhs-dT-Zid" id="Xs1-hZ-Im4"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ia7-lU-evX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2784.8000000000002" y="76.911544227886068"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dkT-2C-U66">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3s6-gN-Bqz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2n2-C9-hSS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qcd-ga-F3j" kind="relationship" relationship="rootViewController" id="eKy-TR-9NE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vNL-F7-vZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845.5999999999999" y="76.911544227886068"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera-icon" width="58" height="46"/>
+        <image name="menu-icon" width="44" height="32"/>
+        <image name="scanned-text" width="654" height="999"/>
+    </resources>
 </document>
