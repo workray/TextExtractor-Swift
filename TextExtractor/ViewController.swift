@@ -31,8 +31,11 @@ class ViewController: UIViewController {
         
         imageView.layer.addSublayer(frameSublayer)
         
-        processor.process(in: imageView) { text in
+        processor.process(in: imageView) { text, elements in
             self.scannedText = text
+            elements.forEach() { feature in
+                self.frameSublayer.addSublayer(feature.shapeLayer)
+            }
         }
     }
     
